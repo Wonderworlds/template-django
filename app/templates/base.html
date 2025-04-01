@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>day08 | {% block title %}{% endblock %}</title>
+  {% load django_bootstrap5 %}
+  {% load i18n %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+    rel="stylesheet">
+
+</head>
+
+<body>
+  {% include 'nav.html' %}
+  <div class="container">
+    {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+    <div>
+      <div class="d-flex justify-content-between align-items-center">
+        {% if user.is_authenticated %}
+        <a href="{% url 'publish' %}" class="btn btn-primary">{% trans "Create new Article" %}</a>
+        {% endif %}
+      </div>
+      <br />
+      <br />
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</body>
+
+</html>

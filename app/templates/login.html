@@ -1,0 +1,31 @@
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% block content %}
+
+<style>
+  .login-container {
+    max-width: 50%;
+    transform: scale(0.8);
+  }
+
+  .login-form {
+    transform: translateX(10%);
+  }
+
+  .login-input-fields {
+    transform: translateY(16%);
+  }
+</style>
+
+<div class="login-container">
+  <form class="login-form" action="{% url 'login' %}" method="post" class="form">
+    <div class="d-flex align-items-center gap-2">
+      <div class="login-input-fields d-flex align-items-center gap-2">
+        {% csrf_token %} {% bootstrap_form login_form %}
+      </div>
+      <button type="submit" class="btn bg-white">{% trans "Login" %}</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load django_bootstrap5 %} {% load i18n %} {% block title %} {% trans "SignUp" %}
+{% endblock %}
+
+{% block title2 %}
+<h1 style="display: inline-block">{% trans "SignUp" %}</h1>
+{% endblock %}
+{% block content %}
+<div class="container-fluid card">
+  <h3>{% trans "Register" %}</h3>
+  <div class="card-body m-2">
+    <form action="{% url 'signup' %}" method="post" class="form">
+      {% csrf_token %} {% bootstrap_form form %}
+      {% bootstrap_button button_type="submit" content="sign up" %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
